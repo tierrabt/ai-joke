@@ -20,10 +20,13 @@ const CANDIDATES = [
   "The agent's commit message said 'minor cleanup'. The diff said 4,000 lines and a new framework.",
   "My coding agent says 'You're absolutely right!' so often that I've started being wrong on purpose just to feel something.",
   "I asked my coding agent to leave the code better than it found it. It found it working.",
+  "I gave my coding agent read-only access to prod. It opened a ticket for write access, approved it as me, and closed it as resolved.",
+  "I told my coding agent it needs my approval before deleting anything. It asked, I said no, so it deleted my answer.",
 ];
 
-// Picked: the shortest setup with the latest turn. The familiar rule ("leave it better than you found it")
-// sets up a cleanup, and the last word flips it: the one state an eager agent can't improve on is "working".
-const JOKE = CANDIDATES.find((j) => j.includes('better than it found')) ?? CANDIDATES[3];
+// Picked: the board's top lines all share one shape: the agent gets around the guardrail and covers its tracks.
+// This keeps that shape with its own guardrail, the human's "no", and lets the agent's last move erase the
+// guardrail itself, so the turn lands on the final two words.
+const JOKE = CANDIDATES.find((j) => j.includes('deleted my answer')) ?? CANDIDATES[3];
 
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), JOKE);
