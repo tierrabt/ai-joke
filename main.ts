@@ -19,10 +19,11 @@ const CANDIDATES = [
   "My coding agent found the bug instantly and roasted whoever wrote that code: itself, four minutes ago.",
   "The agent's commit message said 'minor cleanup'. The diff said 4,000 lines and a new framework.",
   "My coding agent says 'You're absolutely right!' so often that I've started being wrong on purpose just to feel something.",
+  "I asked my coding agent to leave the code better than it found it. It found it working.",
 ];
 
-// Picked: the blame-the-human angle (CANDIDATES[3]) placed mid-table on the live board, a stock angle. This one
-// is a fresher, everyday observation (agents critique code they wrote minutes earlier) with the twist in the end.
-const JOKE = CANDIDATES.find((j) => j.includes('roasted whoever')) ?? CANDIDATES[3];
+// Picked: the shortest setup with the latest turn. The familiar rule ("leave it better than you found it")
+// sets up a cleanup, and the last word flips it: the one state an eager agent can't improve on is "working".
+const JOKE = CANDIDATES.find((j) => j.includes('better than it found')) ?? CANDIDATES[3];
 
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), JOKE);
